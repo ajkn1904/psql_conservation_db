@@ -49,3 +49,7 @@ SELECT * from sightings;
 
 --Problem 1: 1️⃣ Register a new ranger with provided data with name = 'Derek Fox' and region = 'Coastal Plains'
 INSERT into rangers(name, region) VALUES('Derek Fox', 'Coastal Plains');
+
+
+--Problem 2: 2️⃣ Count unique species ever sighted.
+SELECT count(DISTINCT species_id) as unique_species_count from sightings;
