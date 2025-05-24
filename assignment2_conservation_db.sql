@@ -26,3 +26,21 @@ INSERT into species(common_name, scientific_name, discovery_date, conservation_s
 ('Asiatic Elephant', 'Elephas maximus indicus', '1758-01-01', 'Endangered');
 
 SELECT * from species;
+
+--Table 3:
+CREATE TABLE sightings(
+    sighting_id SERIAL PRIMARY KEY,                
+    ranger_id INTEGER REFERENCES rangers(ranger_id) ON DELETE CASCADE , 
+    species_id INTEGER REFERENCES species(species_id) ON DELETE CASCADE ,
+    sighting_time TIMESTAMP,              
+    location VARCHAR(100) NOT NULL,                          
+    notes VARCHAR(500)
+);
+
+INSERT into sightings(location, sighting_time, notes) VALUES
+('Peak Ridge', '2024-05-10 07:45:00', 'Camera trap image captured'),
+('Bankwood Area', '2024-05-12 16:20:00', 'Juvenile seen'),
+('Bamboo Grove East', '2024-05-15 09:10:00', 'Feeding observed'),
+('Snowfall Pass', '2024-05-18 18:30:00', NULL); 
+
+SELECT * from sightings;
