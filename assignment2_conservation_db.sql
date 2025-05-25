@@ -78,3 +78,17 @@ DESC LIMIT 2;
 
 --Problem 7: 7️⃣ Update all species discovered before year 1800 to have status 'Historic'.
 UPDATE species set conservation_status = 'Historic' WHERE (extract(YEAR from discovery_date) < 1800); 
+
+
+--Problem 8: 8️⃣ Label each sighting's time of day as 'Morning', 'Afternoon', or 'Evening'.
+/*
+Morning: before 12 PM
+Afternoon: 12 PM–5 PM
+Evening: after 5 PM
+*/
+SELECT sighting_id,
+CASE 
+WHEN extract(HOUR FROM sighting_time) < 12 THEN 'Morning'
+WHEN extract(HOUR FROM sighting_time) BETWEEN 12 AND 17 THEN 'Afternoon'  
+ELSE 'Evening'
+END as time_of_day from sightings;
