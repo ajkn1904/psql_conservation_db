@@ -66,3 +66,11 @@ NATURAL Join rangers GROUP BY rangers.ranger_id;
 
 --Problem 5: 5️⃣ List species that have never been sighted.
 SELECT common_name from species where species_id not in (SELECT DISTINCT species_id FROM sightings);
+
+
+--Problem 6: 6️⃣ Show the most recent 2 sightings.
+SELECT species.common_name, sightings.sighting_time, rangers.name from species 
+JOIN sightings on sightings.species_id = species.species_id 
+JOIN rangers on sightings.ranger_id = rangers.ranger_id
+ORDER BY sighting_time 
+DESC LIMIT 2; 
