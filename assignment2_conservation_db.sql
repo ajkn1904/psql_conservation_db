@@ -74,3 +74,7 @@ JOIN sightings on sightings.species_id = species.species_id
 JOIN rangers on sightings.ranger_id = rangers.ranger_id
 ORDER BY sighting_time 
 DESC LIMIT 2; 
+
+
+--Problem 7: 7️⃣ Update all species discovered before year 1800 to have status 'Historic'.
+UPDATE species set conservation_status = 'Historic' WHERE (extract(YEAR from discovery_date) < 1800); 
